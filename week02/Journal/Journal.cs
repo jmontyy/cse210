@@ -8,7 +8,7 @@ public class Journal
         foreach (var item in _entries)
         {
             item.Display();
-            Console.WriteLine(); //Extra spacer between entries
+            Console.WriteLine();
         }
     }
     public void SaveToFile(string path) 

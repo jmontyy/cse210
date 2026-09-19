@@ -1,5 +1,9 @@
 namespace Journal;
 
+//I exceeded requirements though:
+// - Use of a Switch statement
+// - PromptGenerator being static
+// - Entry class having additional methods for TSV line creation and parsing
 class Program
 {
     static void Main(string[] args)

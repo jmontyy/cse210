@@ -1,0 +1,24 @@
+Abstraction is the process of simplifying complex ideas and functions through breaking them into smaller pieces. This is seen a lot in object-oriented programming, where classes are used to abstract functionality.
+A benefit of abstraction is that it makes individual processes easier to understand and cleaner to read in code. An application of abstraction would be hiding internal logic for registering and converting dates to strings like C#'s DateTime does, and only showing a .ToString() method.
+
+In my project I used abstraction to simplify the loading and saving file logic for Entries and journals. See the code below.
+
+// In the Entry file
+public string BuildTSVLine() => $"{_date}\t{_prompt}\t{_entry}";
+
+public static Entry ParseTSVLine(string line) 
+{
+    string[] parts = line.Split("\t");
+    return new Entry(parts[1], parts[2], parts[0]);
+}
+
+// In the Journal file
+public void LoadFromFile(string path) 
+{
+    string filename = $"{path}.tsv";
+    string[] lines = File.ReadAllLines(filename);
+
+    _entries.Clear();
+    foreach (string line in lines)
+        _entries.Add(Entry.ParseTSVLine(line));
+}
